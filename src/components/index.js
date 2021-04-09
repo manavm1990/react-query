@@ -3,21 +3,26 @@ import ky from 'ky';
 import { useQuery } from 'react-query';
 
 export default function Test() {
-  const { data } = useQuery('pokemon', () =>
+  const { data, status } = useQuery('pokemon', () =>
     ky
       .get('https://pokeapi.co/api/v2/pokemon/')
       .json()
       .then(({ results }) => results)
   );
 
-  return (
-    <UnorderedList>
-      {
-        // Optional chaining `loading` state
-        data?.map((d, index) => (
-          <ListItem key={index}>{d.name}</ListItem>
-        ))
-      }
-    </UnorderedList>
-  );
+  switch (status) {
+    case 'loading':
+      return <p>⏳</p>;
+    default:
+      return (
+        <UnorderedList>
+          {
+            // Optional chaining not required with conditional rendering 🤓
+            data.map((d, index) => (
+              <ListItem key={index}>{d.name}</ListItem>
+            ))
+          }
+        </UnorderedList>
+      );
+  }
 }
