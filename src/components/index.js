@@ -4,9 +4,9 @@ import { useQuery } from 'react-query';
 
 export default function Test() {
   const { data, status } = useQuery('pokemon', () =>
-    ky
-      .get('https://pokeapi.co/api/v2/pokemon/')
-      .json()
+    // Simulate some lag
+    new Promise(resolve => setTimeout(resolve, 1000))
+      .then(() => ky.get('https://pokeapi.co/api/v2/pokemon/').json())
       .then(({ results }) => results)
   );
 
