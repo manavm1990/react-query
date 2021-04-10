@@ -1,6 +1,7 @@
 import { Box, ChakraProvider, Grid, theme } from '@chakra-ui/react';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import Test from './components';
 import './index.css';
@@ -15,6 +16,7 @@ export default function App() {
           <ColorModeSwitcher justifySelf="flex-end" />
           <QueryClientProvider client={qc}>
             <Test />
+            <ReactQueryDevtools />
           </QueryClientProvider>
         </Grid>
       </Box>
