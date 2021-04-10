@@ -3,13 +3,17 @@ import ky from 'ky';
 import { useQuery } from 'react-query';
 
 export default function Test() {
-  const { data, status, error } = useQuery('pokemon', () => {
-    // if (true) throw new Error('Fake Error ❕');
+  const { data, status, error } = useQuery(
+    'pokemon',
+    () => {
+      // if (true) throw new Error('Fake Error ❕');
 
-    return new Promise(resolve => setTimeout(resolve, 1000))
-      .then(() => ky.get('https://pokeapi.co/api/v2/pokemon/').json())
-      .then(({ results }) => results);
-  });
+      return new Promise(resolve => setTimeout(resolve, 1000))
+        .then(() => ky.get('https://pokeapi.co/api/v2/pokemon/').json())
+        .then(({ results }) => results);
+    },
+    { refetchOnWindowFocus: false }
+  );
 
   switch (status) {
     case 'loading':
