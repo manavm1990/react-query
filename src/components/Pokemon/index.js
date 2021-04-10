@@ -1,7 +1,7 @@
 import { ListItem, UnorderedList } from '@chakra-ui/react';
 import { usePokemon } from 'hooks';
 
-export default function Table() {
+export default function Pokemon() {
   const { data, status, error, isFetching } = usePokemon();
 
   switch (status) {
