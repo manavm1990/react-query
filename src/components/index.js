@@ -11,8 +11,9 @@ export default function Test() {
       return new Promise(resolve => setTimeout(resolve, 1000))
         .then(() => ky.get('https://pokeapi.co/api/v2/pokemon/').json())
         .then(({ results }) => results);
-    }
+    },
     // { refetchOnWindowFocus: false }
+    { staleTime: 50000 },
   );
 
   switch (status) {
