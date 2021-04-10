@@ -1,8 +1,8 @@
 import { ListItem, UnorderedList } from '@chakra-ui/react';
-import { usePokemon } from 'hooks';
+import { useData } from 'hooks';
 
 export default function Pokemon() {
-  const { data, status, error, isFetching } = usePokemon();
+  const { data, status, error, isFetching } = useData('pokemon');
 
   switch (status) {
     case 'loading':

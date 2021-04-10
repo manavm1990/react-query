@@ -1,8 +1,8 @@
 import { ListItem, UnorderedList } from '@chakra-ui/react';
-import { useBerries } from 'hooks';
+import { useData } from 'hooks';
 
 export default function Berries() {
-  const { data, status, error, isFetching } = useBerries();
+  const { data, status, error, isFetching } = useData('berry');
 
   switch (status) {
     case 'loading':

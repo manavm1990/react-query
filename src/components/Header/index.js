@@ -1,8 +1,8 @@
 import { Heading } from '@chakra-ui/react';
-import { usePokemon } from 'hooks';
+import { useData } from 'hooks';
 
 export default function Header() {
-  const { data, isSuccess } = usePokemon();
+  const { data, isSuccess } = useData('pokemon');
 
   return (
     <Heading as="h1" size="4xl">
