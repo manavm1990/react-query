@@ -12,8 +12,7 @@ export default function Test() {
         .then(() => ky.get('https://pokeapi.co/api/v2/pokemon/').json())
         .then(({ results }) => results);
     },
-    // { refetchOnWindowFocus: false }
-    { staleTime: 50000 },
+    { refetchOnWindowFocus: false, staleTime: 50000 },
   );
 
   switch (status) {
