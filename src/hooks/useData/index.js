@@ -1,14 +1,14 @@
 import ky from 'ky';
 import { useQuery } from 'react-query';
 
-export default function usePokemon() {
+export default function useData(endpoint) {
   return useQuery(
-    'pokemon',
+    endpoint,
     () => {
       // if (true) throw new Error('Fake Error ❕');
 
       return new Promise(resolve => setTimeout(resolve, 1000))
-        .then(() => ky.get('https://pokeapi.co/api/v2/pokemon/').json())
+        .then(() => ky.get(`https://pokeapi.co/api/v2/${endpoint}/`).json())
         .then(({ results }) => results);
     },
     { refetchOnWindowFocus: false, staleTime: 50000 },

@@ -1,4 +1,5 @@
 import { ListItem, UnorderedList } from '@chakra-ui/react';
+import { BaseHeader } from 'components/base';
 import { useData } from 'hooks';
 
 export default function Pokemon() {
@@ -15,6 +16,7 @@ export default function Pokemon() {
       return (
         <>
           {isFetching ? <p>Updating...</p> : null}
+          <BaseHeader txt="Pokémon" endpoint="pokemon"></BaseHeader>
           <UnorderedList>
             {
               // Optional chaining not required with conditional rendering 🤓

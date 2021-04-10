@@ -1,8 +1,9 @@
 import { ListItem, UnorderedList } from '@chakra-ui/react';
+import { BaseHeader } from 'components/base';
 import { useData } from 'hooks';
 
 export default function Berries() {
-  const { data, status, error, isFetching } = useData('berry');
+  const { data, status, error } = useData('berry');
 
   switch (status) {
     case 'loading':
@@ -14,7 +15,7 @@ export default function Berries() {
     default:
       return (
         <>
-          {isFetching ? <p>Updating...</p> : null}
+          <BaseHeader txt="Berries" endpoint="berry"></BaseHeader>
           <UnorderedList>
             {
               // Optional chaining not required with conditional rendering 🤓

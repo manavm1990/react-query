@@ -3,7 +3,7 @@ import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Berries, Header, Pokemon } from './components';
+import { Berries, Pokemon } from './components';
 import './index.css';
 
 export default function App() {
@@ -20,7 +20,6 @@ export default function App() {
         <Grid p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
           <QueryClientProvider client={qc}>
-            <Header />
             <Button w={12} size="sm" onClick={handleClick}>
               {isVisible ? 'Hide' : 'Show'}
             </Button>
