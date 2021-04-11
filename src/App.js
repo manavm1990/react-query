@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Main } from './components';
+import { List } from './components';
 import './index.css';
 
 export default function App() {
@@ -23,9 +23,9 @@ export default function App() {
             <Button w={12} size="sm" onClick={handleClick}>
               {isVisible ? 'Hide' : 'Show'}
             </Button>
-            {isVisible ? <Main headerTxt="Pokémon" endpoint="pokemon" /> : null}
+            {isVisible ? <List headerTxt="Pokémon" endpoint="pokemon" /> : null}
             <Box borderTop="1px" borderColor="gray.200" mt="4" pt="4">
-              <Main headerTxt="Berries" endpoint="berry" />
+              <List headerTxt="Berries" endpoint="berry" />
             </Box>
             <ReactQueryDevtools />
           </QueryClientProvider>
