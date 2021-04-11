@@ -4,7 +4,7 @@ import { useData } from 'hooks';
 import PropTypes from 'prop-types';
 
 export default function Main({ headerTxt, endpoint }) {
-  const { data, isSuccess } = useData('berry');
+  const { data, isSuccess } = useData(endpoint);
 
   return (
     <>
