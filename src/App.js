@@ -1,5 +1,5 @@
 import { Box, Button, ChakraProvider, Grid, theme } from '@chakra-ui/react';
-import React from 'react';
+import { useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
@@ -8,7 +8,7 @@ import './index.css';
 
 export default function App() {
   const qc = new QueryClient();
-  const [isVisible, setIsVisible] = React.useState(true);
+  const [isVisible, setIsVisible] = useState(true);
 
   function handleClick() {
     setIsVisible(prev => !prev);
