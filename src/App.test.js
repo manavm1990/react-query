@@ -5,8 +5,8 @@ import { render } from './test-utils';
 
 test('renders dark mode toggle button', () => {
   render(<App />);
-  const linkElement = screen.getByRole('button', {
-    ariaLabel: /^Switch to/,
+  const switchElement = screen.getByRole('button', {
+    name: /^Switch to/,
   });
-  expect(linkElement).toBeInTheDocument();
+  expect(switchElement).toBeInTheDocument();
 });
