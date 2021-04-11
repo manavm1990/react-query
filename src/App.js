@@ -3,12 +3,17 @@ import { useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { List } from './components';
+import { List, Search } from './components';
 import './index.css';
 
 export default function App() {
   const qc = new QueryClient();
   const [isVisible, setIsVisible] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  function handleChange({ target: { value } }) {
+    setSearchTerm(() => value);
+  }
 
   function handleClick() {
     setIsVisible(prev => !prev);
@@ -26,6 +31,10 @@ export default function App() {
             {isVisible ? <List headerTxt="Pokémon" endpoint="pokemon" /> : null}
             <Box borderTop="1px" borderColor="gray.200" mt="4" pt="4">
               <List headerTxt="Berries" endpoint="berry" />
+            </Box>
+
+            <Box borderTop="1px" borderColor="gray.200" mt="4" pt="4">
+              <Search handler={handleChange} value={searchTerm} />
             </Box>
             <ReactQueryDevtools />
           </QueryClientProvider>
