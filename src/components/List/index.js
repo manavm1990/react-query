@@ -3,7 +3,7 @@ import { BaseHeader } from 'components/base';
 import { useData } from 'hooks';
 import PropTypes from 'prop-types';
 
-export default function Main({ headerTxt, endpoint }) {
+export default function List({ headerTxt, endpoint }) {
   const { data, isSuccess } = useData(endpoint);
 
   return (
@@ -23,7 +23,7 @@ export default function Main({ headerTxt, endpoint }) {
   );
 }
 
-Main.propTypes = {
+List.propTypes = {
   headerTxt: PropTypes.string.isRequired,
   endpoint: PropTypes.string,
 };
