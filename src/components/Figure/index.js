@@ -9,6 +9,7 @@ export default function Figure({ searchTerm }) {
     // ⚠️ Must send over some `endpoint` to set query up even if it's disabled
     endpoint: searchTerm ? `pokemon/${searchTerm}` : 'pokemon',
     enabled: Boolean(searchTerm),
+    retry: 1,
   });
 
   switch (status) {

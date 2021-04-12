@@ -1,7 +1,13 @@
 import ky from 'ky';
 import { useQuery } from 'react-query';
 
-export default function useData({ qk, endpoint = qk, enabled = true } = {}) {
+// Using `react-query` defaults whenever possible
+export default function useData({
+  qk,
+  endpoint = qk,
+  enabled = true,
+  retry = 3,
+} = {}) {
   return useQuery(
     qk,
     () => {
@@ -11,6 +17,6 @@ export default function useData({ qk, endpoint = qk, enabled = true } = {}) {
         ky.get(`https://pokeapi.co/api/v2/${endpoint}/`).json(),
       );
     },
-    { refetchOnWindowFocus: false, staleTime: 50000, enabled },
+    { refetchOnWindowFocus: false, staleTime: 50000, enabled, retry },
   );
 }
