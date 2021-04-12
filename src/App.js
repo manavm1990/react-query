@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { List, Search } from './components';
+import { Figure, List, Search } from './components';
 import './index.css';
 
 export default function App() {
@@ -36,6 +36,13 @@ export default function App() {
             <Box borderTop="1px" borderColor="gray.200" mt="4" pt="4">
               <Search handler={handleChange} value={searchTerm} />
             </Box>
+
+            {searchTerm ? (
+              <Box borderTop="1px" borderColor="gray.200" mt="4" pt="4">
+                <Figure searchTerm={`${searchTerm}`} />
+              </Box>
+            ) : null}
+
             <ReactQueryDevtools />
           </QueryClientProvider>
         </Grid>

@@ -16,7 +16,7 @@ export default function Header({ txt, endpoint }) {
       return (
         <Heading as="h1" size="4xl">
           {isFetching ? <p>Updating...</p> : null}
-          There are {data.length} {txt}
+          There are {data.results.length} {txt}
         </Heading>
       );
   }

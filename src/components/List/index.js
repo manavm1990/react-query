@@ -11,12 +11,9 @@ export default function List({ headerTxt, endpoint }) {
       <BaseHeader txt={headerTxt} endpoint={endpoint}></BaseHeader>
       {isSuccess ? (
         <UnorderedList>
-          {
-            // Optional chaining not required with conditional rendering 🤓
-            data.map((d, index) => (
-              <ListItem key={index}>{d.name}</ListItem>
-            ))
-          }
+          {data.results.map((d, index) => (
+            <ListItem key={index}>{d.name}</ListItem>
+          ))}
         </UnorderedList>
       ) : null}
     </>
