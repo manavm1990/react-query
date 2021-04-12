@@ -11,12 +11,8 @@ export default function useData({
 } = {}) {
   return useQuery(
     qk,
-    () => {
-      // if (true) throw new Error('Fake Error ❕');
-
-      return new Promise(resolve => setTimeout(resolve, 1000)).then(() =>
-        ky.get(`https://pokeapi.co/api/v2/${endpoint}/`).json(),
-      );
+    async () => {
+      return await ky.get(`https://pokeapi.co/api/v2/${endpoint}/`).json();
     },
     { refetchOnWindowFocus: false, staleTime: 50000, enabled, retry },
   );
