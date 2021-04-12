@@ -3,10 +3,13 @@ import { useData } from 'hooks';
 import PropTypes from 'prop-types';
 
 export default function Figure({ searchTerm }) {
-  const { data, status, error } = useData(
-    `pokemon/${searchTerm}`,
-    Boolean(searchTerm),
-  );
+  const { data, status, error } = useData({
+    qk: ['search', searchTerm],
+
+    // ⚠️ Must send over some `endpoint` to set query up even if it's disabled
+    endpoint: searchTerm ? `pokemon/${searchTerm}` : 'pokemon',
+    enabled: Boolean(searchTerm),
+  });
 
   switch (status) {
     case 'loading':

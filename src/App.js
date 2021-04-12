@@ -24,10 +24,10 @@ export default function App() {
       <Box fontSize="xl">
         <Grid p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
+          <Button w={12} size="sm" onClick={handleClick}>
+            {isVisible ? 'Hide' : 'Show'}
+          </Button>
           <QueryClientProvider client={qc}>
-            <Button w={12} size="sm" onClick={handleClick}>
-              {isVisible ? 'Hide' : 'Show'}
-            </Button>
             {isVisible ? <List headerTxt="Pokémon" endpoint="pokemon" /> : null}
             <Box borderTop="1px" borderColor="gray.200" mt="4" pt="4">
               <List headerTxt="Berries" endpoint="berry" />

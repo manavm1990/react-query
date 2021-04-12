@@ -1,23 +1,22 @@
-import { ListItem, UnorderedList } from '@chakra-ui/react';
-import { BaseHeader } from 'components/base';
+import { Heading, ListItem, UnorderedList } from '@chakra-ui/react';
 import { useData } from 'hooks';
 import PropTypes from 'prop-types';
 
 export default function List({ headerTxt, endpoint }) {
-  const { data, isSuccess } = useData(endpoint);
+  const { data, isSuccess } = useData({ qk: endpoint });
 
-  return (
+  return isSuccess ? (
     <>
-      <BaseHeader txt={headerTxt} endpoint={endpoint}></BaseHeader>
-      {isSuccess ? (
-        <UnorderedList>
-          {data.results.map((d, index) => (
-            <ListItem key={index}>{d.name}</ListItem>
-          ))}
-        </UnorderedList>
-      ) : null}
+      <Heading as="h1" size="4xl">
+        There are {data.results.length} {headerTxt}
+      </Heading>
+      <UnorderedList>
+        {data.results.map((d, index) => (
+          <ListItem key={index}>{d.name}</ListItem>
+        ))}
+      </UnorderedList>
     </>
-  );
+  ) : null;
 }
 
 List.propTypes = {

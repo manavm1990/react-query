@@ -1,9 +1,9 @@
 import ky from 'ky';
 import { useQuery } from 'react-query';
 
-export default function useData(endpoint, enabled = true) {
+export default function useData({ qk, endpoint = qk, enabled = true } = {}) {
   return useQuery(
-    endpoint,
+    qk,
     () => {
       // if (true) throw new Error('Fake Error ❕');
 
