@@ -3,7 +3,10 @@ import { useData } from 'hooks';
 import PropTypes from 'prop-types';
 
 export default function Figure({ searchTerm }) {
-  const { data, status, error } = useData(`pokemon/${searchTerm}`);
+  const { data, status, error } = useData(
+    `pokemon/${searchTerm}`,
+    Boolean(searchTerm),
+  );
 
   switch (status) {
     case 'loading':
@@ -11,7 +14,8 @@ export default function Figure({ searchTerm }) {
     case 'error':
       return <Text>💩 {error.message}</Text>;
     default:
-      const src = data.sprites.front_default;
+      // 😕 Still 'success' even if not enabled
+      const src = data?.sprites?.front_default;
       return (
         <Box boxSize="sm">
           <Image src={src} alt={searchTerm} />

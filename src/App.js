@@ -37,11 +37,9 @@ export default function App() {
               <Search handler={handleChange} value={searchTerm} />
             </Box>
 
-            {searchTerm ? (
-              <Box borderTop="1px" borderColor="gray.200" mt="4" pt="4">
-                <Figure searchTerm={`${searchTerm}`} />
-              </Box>
-            ) : null}
+            <Box borderTop="1px" borderColor="gray.200" mt="4" pt="4">
+              <Figure searchTerm={`${searchTerm}`} />
+            </Box>
 
             <ReactQueryDevtools />
           </QueryClientProvider>

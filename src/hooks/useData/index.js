@@ -1,7 +1,7 @@
 import ky from 'ky';
 import { useQuery } from 'react-query';
 
-export default function useData(endpoint) {
+export default function useData(endpoint, enabled = true) {
   return useQuery(
     endpoint,
     () => {
@@ -11,6 +11,6 @@ export default function useData(endpoint) {
         ky.get(`https://pokeapi.co/api/v2/${endpoint}/`).json(),
       );
     },
-    { refetchOnWindowFocus: false, staleTime: 50000 },
+    { refetchOnWindowFocus: false, staleTime: 50000, enabled },
   );
 }
