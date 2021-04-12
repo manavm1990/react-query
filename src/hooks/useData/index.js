@@ -7,6 +7,7 @@ export default function useData({
   endpoint = qk,
   enabled = true,
   retry = 3,
+  retryDelay = attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000),
 } = {}) {
   return useQuery(
     qk,
