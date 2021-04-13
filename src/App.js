@@ -11,10 +11,6 @@ export default function App() {
   const [isVisible, setIsVisible] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
 
-  function handleChange({ target: { value } }) {
-    setSearchTerm(() => value);
-  }
-
   return (
     <ChakraProvider theme={theme}>
       <Box fontSize="xl">
@@ -36,7 +32,7 @@ export default function App() {
             </Box>
 
             <Box borderTop="1px" borderColor="gray.200" mt="4" pt="4">
-              <Search handler={handleChange} value={searchTerm} />
+              <Search setSearchTerm={setSearchTerm} value={searchTerm} />
             </Box>
 
             <Box borderTop="1px" borderColor="gray.200" mt="4" pt="4">
