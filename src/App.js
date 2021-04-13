@@ -15,16 +15,18 @@ export default function App() {
     setSearchTerm(() => value);
   }
 
-  function handleClick() {
-    setIsVisible(prev => !prev);
-  }
-
   return (
     <ChakraProvider theme={theme}>
       <Box fontSize="xl">
         <Grid p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
-          <Button w={12} size="sm" onClick={handleClick}>
+          <Button
+            w={12}
+            size="sm"
+            onClick={() => {
+              setIsVisible(prev => !prev);
+            }}
+          >
             {isVisible ? 'Hide' : 'Show'}
           </Button>
           <QueryClientProvider client={qc}>
