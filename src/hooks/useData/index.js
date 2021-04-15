@@ -24,6 +24,6 @@ export default function useData({
 
       return results;
     },
-    { refetchOnWindowFocus: false, staleTime: 50000, enabled, retry },
+    { enabled, retry },
   );
 }
