@@ -2,14 +2,13 @@ import { Box, Image, Text } from '@chakra-ui/react';
 import { useData } from 'hooks';
 import PropTypes from 'prop-types';
 
-export default function Figure({ searchTerm }) {
+export default function Figure({ searchTerm, dispatch }) {
   const { data, status, error, isFetching } = useData({
     qk: ['search', searchTerm],
 
     // ⚠️ Must send over some `endpoint` to set query up even if it's disabled
     endpoint: searchTerm ? `pokemon/${searchTerm}` : 'pokemon',
     enabled: Boolean(searchTerm),
-    retry: 2,
     retryDelay: 1000,
   });
 
@@ -35,4 +34,5 @@ export default function Figure({ searchTerm }) {
 
 Figure.propTypes = {
   searchTerm: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
