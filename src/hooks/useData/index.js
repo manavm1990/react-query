@@ -11,8 +11,18 @@ export default function useData({
 } = {}) {
   return useQuery(
     qk,
-    async () => {
-      return await ky.get(`https://pokeapi.co/api/v2/${endpoint}/`).json();
+    () => {
+      const controller = new AbortController();
+      const signal = controller.signal;
+
+      const results = ky
+        .get(`https://pokeapi.co/api/v2/${endpoint}/`, { signal })
+        .json();
+
+      // `cancel` is used by React Query
+      results.cancel = () => controller.abort();
+
+      return results;
     },
     { refetchOnWindowFocus: false, staleTime: 50000, enabled, retry },
   );
